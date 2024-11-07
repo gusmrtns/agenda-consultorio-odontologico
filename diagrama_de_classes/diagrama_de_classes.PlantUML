@@ -1,0 +1,81 @@
+@startuml
+left to right direction
+
+class Paciente {
+    - cpf: string
+    - nome: string
+    - dataNascimento: Date
+    + validarCPF(): boolean
+    + validarIdadeMinima(): boolean
+}
+
+class Consulta {
+    - paciente: Paciente
+    - dataConsulta: Date
+    - horaInicio: string
+    - horaFim: string
+    + validarHorario(): boolean
+    + calcularTempo(): string
+    + ehFuturo(): boolean
+    + verificarSobreposicao(outraConsulta: Consulta): boolean
+}
+
+class Agenda {
+    - consultas: Consulta[]
+    + adicionarConsulta(consulta: Consulta): void
+    + cancelarConsulta(paciente: Paciente, data: Date, horaInicio: string): void
+    + listarConsultas(periodoInicio: Date, periodoFim?: Date): Consulta[]
+}
+
+class PacienteFactory {
+    + criarPaciente(cpf: string, nome: string, dataNascimento: Date): Paciente
+}
+
+class ConsultaFactory {
+    + criarConsulta(paciente: Paciente, dataConsulta: Date, horaInicio: string, horaFim: string): Consulta
+}
+
+class PacienteService {
+    + adicionarPaciente(cpf: string, nome: string, dataNascimento: Date): void
+    + removerPaciente(cpf: string): void
+    + listarPacientes(ordenadoPor: string): Paciente[]
+}
+
+class ConsultaService {
+    + agendarConsulta(cpf: string, dataConsulta: Date, horaInicio: string, horaFim: string): void
+    + cancelarConsulta(cpf: string, dataConsulta: Date, horaInicio: string): void
+    + listarAgenda(periodoInicio?: Date, periodoFim?: Date): Consulta[]
+}
+
+class PacienteController {
+    + cadastrarPaciente()
+    + excluirPaciente()
+    + listarPacientes(ordenadoPor: string)
+}
+
+class AgendaController {
+    + agendarConsulta()
+    + cancelarConsulta()
+    + listarAgenda(periodoInicio?: Date, periodoFim?: Date)
+}
+
+class PacienteView
+class AgendaView
+
+Paciente "1" -- "1..*" Consulta : association
+Agenda "1" o-- "1..*" Consulta : composition
+
+PacienteFactory --> Paciente : creates
+ConsultaFactory --> Consulta : creates
+
+PacienteService --> Paciente : manages
+ConsultaService --> Consulta : manages
+ConsultaService --> Agenda : manages
+
+PacienteController --> PacienteService : uses
+AgendaController --> ConsultaService : uses
+
+PacienteController --> PacienteView : displays
+AgendaController --> AgendaView : displays
+
+@enduml
