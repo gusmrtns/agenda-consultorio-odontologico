@@ -1,6 +1,6 @@
 // views/PacienteView.js
-
 const prompt = require('prompt-sync')();
+const PacienteFactory = require('../factories/PacienteFactory');
 
 class PacienteView {
     static exibirMenuPaciente() {
@@ -31,6 +31,25 @@ class PacienteView {
 
     static solicitarDataNascimento() {
         return prompt("Digite a data de nascimento do paciente (DD/MM/AAAA): ");
+    }
+
+    // Solicita as informações do paciente ao usuário, expecificamente para a criação
+    static solicitarDadosPaciente() {
+        const cpf = prompt("Digite o CPF do paciente: ");
+        const nome = prompt("Digite o nome do paciente: ");
+        const dataNascimento = prompt("Digite a data de nascimento (YYYY-MM-DD): ");
+
+        // Tenta criar o paciente usando a factory
+        const resultado = PacienteFactory.criarPaciente(cpf, nome, dataNascimento);
+
+        // Verifica o resultado e exibe a mensagem apropriada
+        if (resultado.valido) {
+            console.log("Paciente cadastrado com sucesso!");
+            return resultado.paciente; // Retorna o paciente criado se for válido
+        } else {
+            console.log(`Erro: ${resultado.erro}`); // Exibe a mensagem de erro se a criação falhar
+            return null;
+        }
     }
 }
 

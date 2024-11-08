@@ -5,8 +5,6 @@ class Paciente {
     - cpf: string
     - nome: string
     - dataNascimento: Date
-    + validarCPF(): boolean
-    + validarIdadeMinima(): boolean
 }
 
 class Consulta {
@@ -14,10 +12,6 @@ class Consulta {
     - dataConsulta: Date
     - horaInicio: string
     - horaFim: string
-    + validarHorario(): boolean
-    + calcularTempo(): string
-    + ehFuturo(): boolean
-    + verificarSobreposicao(outraConsulta: Consulta): boolean
 }
 
 class Agenda {
@@ -28,11 +22,16 @@ class Agenda {
 }
 
 class PacienteFactory {
-    + criarPaciente(cpf: string, nome: string, dataNascimento: Date): Paciente
+    + criarPaciente(cpf: string, nome: string, dataNascimento: Date): {valido: boolean, erro?: string, paciente?: Paciente}
+    + validarCPF(cpf: string): boolean
+    + validarIdadeMinima(dataNascimento: Date): boolean
 }
 
 class ConsultaFactory {
-    + criarConsulta(paciente: Paciente, dataConsulta: Date, horaInicio: string, horaFim: string): Consulta
+    + criarConsulta(paciente: Paciente, dataConsulta: Date, horaInicio: string, horaFim: string): {valido: boolean, erro?: string, consulta?: Consulta}
+    + validarHorario(horaInicio: string, horaFim: string): {valido: boolean, erro?: string}
+    + ehFuturo(dataConsulta: Date): boolean
+    + verificarSobreposicao(dataConsulta: Date, horaInicio: string, horaFim: string): boolean
 }
 
 class PacienteService {
