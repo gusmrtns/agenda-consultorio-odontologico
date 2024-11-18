@@ -1,5 +1,4 @@
 export class Paciente {
-
     #nome;
     #cpf;
     #data_nascimento;
@@ -14,20 +13,16 @@ export class Paciente {
         return this.#nome;
     }
 
-    
     getCPF() {
         return this.#cpf;
     }
 
-    
     getDataNascimento() {
         return this.#data_nascimento;
     }
 
-    //TO DO 
+    // Método toString para retornar uma representação legível do paciente
     toString() {
-        
+        return `Nome: ${this.#nome}, CPF: ${this.#cpf}, Data de Nascimento: ${this.#data_nascimento}`;
     }
-
 }
-

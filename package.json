@@ -1,0 +1,33 @@
+{
+  
+  "name": "residencia_de_software",
+  
+  "version": "1.0.0",
+  
+  "description": "",
+  
+  "main": "app.js",
+  
+  "type": "module",
+  
+  "scripts": {
+  
+    
+  "start": "node app.js"
+  
+  },
+  
+  "author": "",
+  
+  "license": "ISC",
+  
+  "dependencies": {
+  
+    
+  "luxon": "^3.5.0",
+  
+    
+  "prompt-sync": "^4.2.0"
+  
+  }
+}
