@@ -27,7 +27,10 @@
   "luxon": "^3.5.0",
   
     
-  "prompt-sync": "^4.2.0"
+  "prompt-sync": "^4.2.0",
+  
+    
+  "residencia_de_software": "file:"
   
   }
 }

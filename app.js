@@ -32,10 +32,11 @@ async function exibirMenuPrincipal() {
 
 async function exibirMenuCadastroPaciente() {
     console.log(`
-    1 - Cadastrar novo paciente
-    2 - Excluir paciente
-    3 - Listar pacientes
-    4 - Voltar
+1 - Cadastrar novo paciente
+2 - Excluir paciente
+3 - Listar pacientes (ordenado por CPF)
+4 - Listar pacientes (ordenado por nome)
+5 - Voltar p/ menu principal
     `);
 
     const opcao = input('Escolha uma opção: ');
@@ -48,9 +49,12 @@ async function exibirMenuCadastroPaciente() {
             await PacienteController.excluirPaciente();
             break;
         case '3':
-            PacienteController.listarPacientes();
+            await PacienteController.listarPacientesOrdenadosPorCPF();
             break;
         case '4':
+            await PacienteController.listarPacientesOrdenadosPorNome();
+            break;
+        case '5':
             await exibirMenuPrincipal();
             return;
         default:

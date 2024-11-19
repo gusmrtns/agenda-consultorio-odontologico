@@ -52,11 +52,14 @@ export class ConsultaFactory {
         const agenda = Agenda.getInstance();
         const inicio = this.converterParaMinutos(horaInicio);
         const fim = this.converterParaMinutos(horaFim);
+        const dataConsultaLuxon = DateTime.fromFormat(dataConsulta, 'dd/MM/yyyy');
 
         return !agenda.getConsultas().some(consulta => {
-            if (consulta.dataConsulta.toDateString() === dataConsulta.toDateString()) {
-                const consultaInicio = this.converterParaMinutos(consulta.horaInicio);
-                const consultaFim = this.converterParaMinutos(consulta.horaFim);
+            const dataConsultaLuxonAuxiliar = DateTime.fromFormat(consulta.getDataConsulta(), 'dd/MM/yyyy');
+
+            if (dataConsultaLuxonAuxiliar.equals(dataConsultaLuxon)) {
+                const consultaInicio = this.converterParaMinutos(consulta.getHoraInicio());
+                const consultaFim = this.converterParaMinutos(consulta.getHoraFim());
                 return (
                     (inicio >= consultaInicio && inicio < consultaFim) ||
                     (fim > consultaInicio && fim <= consultaFim) ||

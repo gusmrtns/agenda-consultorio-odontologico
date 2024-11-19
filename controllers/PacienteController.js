@@ -30,9 +30,39 @@ export class PacienteController {
         }
     }
 
+    // Método para listar pacientes de acordo com a escolha do usuário
     // Método para listar todos os pacientes
-    static listarPacientes() {
-        const pacientes = Agenda.getInstance().getPacientes();
-        PacienteView.listarPacientes(pacientes);
+    static listarPacientesOrdenadosPorNome() {
+        try {
+            const pacientes = Agenda.getInstance().getPacientes();
+    
+            if (!Array.isArray(pacientes) || pacientes.length === 0) {
+                console.log('Nenhum paciente encontrado.');
+                return;
+            }
+    
+            const pacientesOrdenados = pacientes.sort((a, b) => a.getNome().localeCompare(b.getNome()));
+            PacienteView.listarPacientes(pacientesOrdenados);
+        } catch (error) {
+            console.error('Erro ao listar pacientes por nome:', error.message);
+        }
     }
+    
+    static listarPacientesOrdenadosPorCPF() {
+        try {
+            const pacientes = Agenda.getInstance().getPacientes();
+    
+            if (!Array.isArray(pacientes) || pacientes.length === 0) {
+                console.log('Nenhum paciente encontrado.');
+                return;
+            }
+    
+            const pacientesOrdenados = pacientes.sort((a, b) => a.getCPF().localeCompare(b.getCPF()));
+            PacienteView.listarPacientes(pacientesOrdenados);
+        } catch (error) {
+            console.error('Erro ao listar pacientes por CPF:', error.message);
+        }
+    }
+    
+    
 }

@@ -27,6 +27,10 @@ export class Consulta {
         return this.#horaFim;
     }
 
+    getPaciente() {
+        return this.#paciente;
+    }
+
     // Método toString para retornar uma representação legível da consulta
     toString() {
         return `Consulta de ${this.#paciente.getNome()} em ${this.#dataConsulta} das ${this.#horaInicio} às ${this.#horaFim}`;
