@@ -43,9 +43,9 @@ Desenvolver uma aplicação console em Javascript para administrar a agenda de u
 | O horário de funcionamento do consultório é das 8:00h às 19:00h.                                                                               | **Done**    |
 | **4. Cancelamento de um agendamento**: são necessários CPF do paciente, data da consulta e hora inicial.                                       | **Done**    |
 | O cancelamento só pode ser realizado se for de um agendamento futuro.                                                                          | **Done**    |
-| **5. Listagem dos Pacientes**                                                                                                                  | **Done**    |
+| **5. Listagem dos Pacientes**                                                                                                                  | **Pending** |
 | A listagem de pacientes deve ser apresentada conforme o layout e pode estar ordenada de forma crescente por CPF ou nome.                       | **Done**    |
-| Se o paciente possuir um agendamento futuro, os dados do agendamento devem ser apresentados abaixo dos dados do paciente.                      | **Done**    |
+| Se o paciente possuir um agendamento futuro, os dados do agendamento devem ser apresentados abaixo dos dados do paciente.                      | **Pending** |
 | **6. Listagem da Agenda**                                                                                                                      | **Pending** |
 | A listagem da agenda deve ser apresentada conforme o layout e deve estar ordenada de forma crescente por data e hora inicial.                  | **Pending** |
 | O usuário pode listar toda a agenda ou a agenda de um período específico.                                                                      | **Pending** |
