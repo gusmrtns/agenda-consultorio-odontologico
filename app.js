@@ -1,5 +1,5 @@
-import { PacienteController } from './controllers/PacienteController.js';
-import { ConsultaController } from './controllers/ConsultaController.js';
+import { PacienteController } from './src/controllers/PacienteController.js';
+import { ConsultaController } from './src/controllers/ConsultaController.js';
 import promptSync from 'prompt-sync';
 
 const input = promptSync();
